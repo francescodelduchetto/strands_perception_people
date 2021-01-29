@@ -183,7 +183,7 @@ int main(int argc, char **argv)
 
     pn.param("map_topic", map_topic, std::string("/ppl_filter_map"));
     pn.param("frame_id_map", frame_id_map, std::string("/map"));
-    pn.param("frame_id_people", frame_id_people, std::string("robot5/base_link"));
+    pn.param("frame_id_people", frame_id_people, std::string("base_link"));
 
     ROS_DEBUG("Looking for map in topic [%s], frame [%s]",map_topic.c_str(), frame_id_map.c_str());
     ROS_DEBUG("Expecting people tracker positions in frame [%s]",frame_id_people.c_str());
@@ -235,7 +235,7 @@ int main(int argc, char **argv)
     message_filters::Synchronizer<MySyncPolicy> sync(MySyncPolicy(10), pt_sub, ps_sub, pa_sub, p_sub);
     sync.registerCallback(boost::bind(&callback, _1, _2, _3, _4));
 
-    // robot5/base_link
+    // base_link
     tf2_ros::Buffer tfBuffer2;
     tf2_ros::TransformListener tf2_listener(tfBuffer2);
 
